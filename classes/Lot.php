@@ -178,6 +178,7 @@ class Lot{
     
     public function stop() { 
         $result = new Result;
+        $result->set_source($this->_id);
         
         if ($this->get_login() == $_SESSION['login']) {
             DB::getInstance()->update('UPDATE lots SET end_time = current_timestamp WHERE id = ?', [$this->_id]);
@@ -198,7 +199,7 @@ class Lot{
             }
         }
 
-        Bid::delete($this->_id);
+        Bid::delete_all($this->_id);
         
         DB::getInstance()->delete('DELETE FROM lots WHERE id = ?', [$this->_id]);
         
@@ -208,6 +209,7 @@ class Lot{
     
     public function place_bid($bid, $user) {
         $result = new Result;
+        $result->set_source($this->_id);
         $bid = trim($bid);
                
         if (!$user->get_id()) {

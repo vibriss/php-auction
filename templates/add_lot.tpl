@@ -49,5 +49,4 @@
         </tr>    
     </table>
     <button type="submit" name="submit_add">добавить</button>
-    {include file ="errors_and_messages.tpl"}
-</form>   
+</form>  

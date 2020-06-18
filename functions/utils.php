@@ -12,8 +12,8 @@ function debug($var) {
 
 function get_input_integer($source, $name) {
     $integer = filter_input($source, $name, FILTER_VALIDATE_INT);
-    if (!$integer) {
-        throw new Exception("параметр $name не число");
+    if ($integer === false) {
+        throw new Exception("параметр $name не целое число");
     }
     return $integer;
 }

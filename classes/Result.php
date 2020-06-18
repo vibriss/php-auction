@@ -4,16 +4,12 @@ class Result {
     protected $_errors = [];
     protected $_messages = [];
     protected $_warnings = [];
-    protected $_source = 'global';
+    protected $_source = '';
     
-    public function set_source($string) {
-        $this->_source = $string;
+    public function set_source($source) {
+        $this->_source = $source;
     }
     
-    public function get_source($string) {
-        return $this->_source;
-    }
-
     public function add_error($string) {
         $this->_errors[] = $string;
     }
@@ -30,15 +26,11 @@ class Result {
          return empty($this->_errors);
     }
     
-    public function send_to_template() { //TODO как правильно назвать?
- /*       $_SESSION[ //TODO почему не работает?
-            'errors' => $this->_errors,
-            'messages' => $this->_messages,
-            'warnings' => $this->_warnings
-        ]*/
-        $_SESSION['errors'] = $this->_errors;
+    public function store_in_session() {
+        $_SESSION['errors']   = $this->_errors;
         $_SESSION['warnings'] = $this->_warnings;
         $_SESSION['messages'] = $this->_messages;
+        $_SESSION['source']   = $this->_source;
     }
     
     private function get_errors() {

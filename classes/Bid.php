@@ -1,13 +1,7 @@
 <?php
 
 class Bid {
-    protected $_id;
-    
-    public function __construct($id) {
-        $this->_id = $id;
-    }
-    
-    public static function delete($lot_id) {
+    public static function delete_all($lot_id) {
         DB::getInstance()->delete('DELETE FROM bids WHERE lot_id = ?', [$lot_id]);
     }
     

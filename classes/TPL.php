@@ -27,24 +27,14 @@ class TPL {
         $smarty->assign([
             'messages' => $_SESSION['messages'] ?? [],
             'errors'   => $_SESSION['errors'] ?? [],
-            'warnings'   => $_SESSION['warnings'] ?? []
+            'warnings' => $_SESSION['warnings'] ?? [],
+            'source'   => $_SESSION['source']
         ]);
         $_SESSION['messages'] = [];
         $_SESSION['errors'] = [];
         $_SESSION['warnings'] = [];
+        $_SESSION['source'] = '';
         
         self::$_instance = $smarty; 
     }
-    
-/*    public static function add_error($error) {
-        if (is_array($error)) {
-            $_SESSION['errors'] = array_merge($_SESSION['errors'], $error);
-        } else {
-            $_SESSION['errors'][] = $error;
-        }
-    }
-    
-    public static function add_message($message) {
-        $_SESSION['messages'][] = $message;  
-    }*/
 }

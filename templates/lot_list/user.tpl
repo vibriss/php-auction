@@ -6,6 +6,7 @@
             <tr>
                 {foreach $lot_list as $key => $lot}
                     <td>
+                        {include file ="errors_and_messages.tpl" form =$lot->get_id()}
                         <table border="0" cellspacing="2" cellpadding="2">
                             <tr>
                                 <td valign = "top">

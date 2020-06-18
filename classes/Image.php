@@ -31,6 +31,11 @@ class Image {
         return $this->_path;
     }
     
+    public function delete() {
+        unlink($this->get_path());
+        DB::getInstance()->delete('DELETE FROM images WHERE id = ?', [$this->_id]);
+    }
+    
     public static function get_path_by_id($id) {
         $image = new Image($id);
         return $image->get_path();
@@ -60,10 +65,5 @@ class Image {
         $result->add_message('картинка добавлена');
         
         return $result;
-    }
-    
-    public function delete() {
-        unlink($this->get_path());
-        DB::getInstance()->delete('DELETE FROM images WHERE id = ?', [$this->_id]);
     }
 }

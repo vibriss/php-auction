@@ -1,12 +1,12 @@
 {if count($lot_list) == 0}
     <div>активных аукционов нет<div/>
 {else}
-    {include file ="errors_and_messages.tpl"}
     <form method="POST" action="action_bid.php" enctype="multipart/form-data">
         <table border="1" cellspacing="20" cellpadding="10">
             <tr>
                 {foreach $lot_list as $key => $lot}
                     <td>
+                        {include file ="errors_and_messages.tpl" form =$lot->get_id()}
                         <table border="0" cellspacing="2" cellpadding="2">
                             <tr>
                                 <td valign = "top">
