@@ -1,7 +1,6 @@
 <?php
 
 abstract class LotList {
-//    const TEMPLATE = '';
     protected $_lots = [];
     
     public function __construct($lot_ids) {
@@ -13,10 +12,4 @@ abstract class LotList {
     public function get_lots() {
         return $this->_lots;
     }
-    
-    /*    public function show() {
-        $template = TPL::getInstance();
-        $template->assign('lots', $this->_lots);
-        return $template->fetch(static::TEMPLATE);
-    }*/
 }
